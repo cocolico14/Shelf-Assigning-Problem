@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package shelfassigning;
 
 import java.util.ArrayList;
@@ -21,15 +21,13 @@ public class SimulatedAnnealing {
     private Tree tree;
     private double temp;
     private final double rate;
-    private ArrayList<Pair<String, Integer>> chart;
-    private ArrayList<Integer> repeatedHeru; //for removing repeated herus in chart (for better illustration)
+    private ArrayList<Pair<Integer, Integer>> chart;
     
     public SimulatedAnnealing(Table tbl, double temp, double rate) {
         this.tbl = tbl;
         this.temp = temp;
         this.rate = rate;
         this.chart = new ArrayList<>();
-        this.repeatedHeru = new ArrayList<>();
     }
     
     public String solve(){
@@ -49,10 +47,7 @@ public class SimulatedAnnealing {
         int counter = 0;
         while(temp > 1){
             bestNode.addChilden(tbl.subsSize);
-            if(!repeatedHeru.contains(bestNode.getHeru(tbl))){
-                chart.add(new Pair<String, Integer>(Integer.toString(counter), bestNode.getHeru(tbl)));
-                repeatedHeru.add(bestNode.getHeru(tbl));
-            }
+            chart.add(new Pair<Integer, Integer>(counter, bestNode.getHeru(tbl)));
             Random rnd = new Random(System.currentTimeMillis());
             Node neighbor = bestNode;
             neighbor = bestNode.getChildren().get(rnd.nextInt(bestNode.getChildren().size()));
@@ -65,8 +60,8 @@ public class SimulatedAnnealing {
         }
         return bestNode + " : " + bestNode.getHeru(tbl);
     }
-
-    public ArrayList<Pair<String, Integer>> getChart() {
+    
+    public ArrayList<Pair<Integer, Integer>> getChart() {
         return chart;
     }
     

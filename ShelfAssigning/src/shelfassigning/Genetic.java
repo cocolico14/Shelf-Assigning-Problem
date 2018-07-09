@@ -26,18 +26,17 @@ public class Genetic {
     private int populationSize;
     private double mutationProb;
     private int max;
-    private ArrayList<Pair<String, Integer>> chart;
-    private ArrayList<String> repeatedChrom; //for removing repeated herus in chart (for better illustration)
+    private ArrayList<Pair<Integer, Integer>> chart;
     private int counter = 0;
     
-    public Genetic(int subSize, ArrayList<Node> init, Table tlb, double mutationProb, int populationSize) {
+    public Genetic(int subSize, ArrayList<Node> init, Table tlb,
+            double mutationProb, int populationSize) {
         this.subSize = subSize;
         this.population = new ConcurrentHashMap<>();
         this.tlb = tlb;
         this.mutationProb = mutationProb;
         this.populationSize = populationSize;
         this.chart = new ArrayList<>();
-        this.repeatedChrom = new ArrayList<>();
         this.max = Integer.MIN_VALUE;
         populate(init);
         fitness();
@@ -112,12 +111,6 @@ public class Genetic {
         
         int c = 0;
         for (Entry<String, Integer> entry : list) {
-            if(c == 0){
-                if(!repeatedChrom.contains(entry.getKey())){
-                    chart.add(new Pair<String, Integer>(Integer.toString(counter), entry.getValue()));
-                    repeatedChrom.add(entry.getKey());
-                }
-            }
             if(this.population.size() - c > this.populationSize){
                 reject.add(entry.getKey());
                 c++;
@@ -130,6 +123,11 @@ public class Genetic {
                 population.remove(ent.getKey());
             }
         }
+        for (Map.Entry<String, Integer> ent : population.entrySet()){
+            chart.add(new Pair<Integer, Integer>(counter, ent.getValue()));
+            break;
+        }
+        
     }
     
     public ArrayList<String> selection(){
@@ -223,7 +221,7 @@ public class Genetic {
         return true;
     }
 
-    public ArrayList<Pair<String, Integer>> getChart() {
+    public ArrayList<Pair<Integer, Integer>> getChart() {
         return chart;
     }
     
