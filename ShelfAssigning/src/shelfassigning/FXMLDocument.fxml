@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -8,11 +7,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="shelfassigning.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shelfassigning.FXMLDocumentController">
    <children>
       <HBox layoutX="12.0" layoutY="10.0" prefHeight="576.0" prefWidth="780.0" spacing="10.0">
          <children>
@@ -22,8 +22,8 @@
                   <TextArea fx:id="input" prefHeight="151.0" prefWidth="260.0" />
                   <HBox prefHeight="53.0" prefWidth="260.0">
                      <children>
-                        <Button fx:id="button" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" onKeyPressed="#handleButtonAction" prefHeight="31.0" prefWidth="54.0" text="Run" textAlignment="CENTER" textOverrun="CLIP" />
-                        <ChoiceBox fx:id="method" prefHeight="31.0" prefWidth="206.0" onAction="#choiceBoxAction" />
+                        <Button fx:id="runButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleRunButtonAction" onKeyPressed="#handleRunButtonAction" prefHeight="31.0" prefWidth="54.0" text="Run" textAlignment="CENTER" textOverrun="CLIP" />
+                        <ChoiceBox fx:id="method" onAction="#choiceBoxAction" prefHeight="31.0" prefWidth="206.0" />
                      </children>
                   </HBox>
                   <Label alignment="TOP_CENTER" prefHeight="18.0" prefWidth="48.0" text="output" />
@@ -32,44 +32,89 @@
                      <children>
                         <VBox prefHeight="89.0" prefWidth="38.0" spacing="15.0">
                            <children>
-                              <Label text="Run#" />
-                              <Label text="Temp" />
-                              <Label text="aRate" />
+                              <Label text="Run#">
+                                 <tooltip>
+                                    <Tooltip text="Number of Runs" />
+                                 </tooltip></Label>
+                              <Label text="Temp">
+                                 <tooltip>
+                                    <Tooltip text="Temperature for Simulated Annealing" />
+                                 </tooltip></Label>
+                              <Label text="aRate">
+                                 <tooltip>
+                                    <Tooltip text="Cooling Rate for Simulated Annealing" />
+                                 </tooltip></Label>
                            </children>
                         </VBox>
                         <VBox prefHeight="89.0" prefWidth="72.0" spacing="5.0">
                            <children>
-                              <TextField fx:id="numberOfRuns" prefHeight="6.0" prefWidth="72.0" />
-                              <TextField fx:id="temperatureSA" prefHeight="0.0" prefWidth="72.0" />
-                              <TextField fx:id="rateSA" />
+                              <TextField fx:id="numberOfRuns" prefHeight="6.0" prefWidth="72.0">
+                                 <tooltip>
+                                    <Tooltip text="Number of Runs" />
+                                 </tooltip></TextField>
+                              <TextField fx:id="temperatureSA" prefHeight="0.0" prefWidth="72.0">
+                                 <tooltip>
+                                    <Tooltip text="Temperature for Simulated Annealing" />
+                                 </tooltip></TextField>
+                              <TextField fx:id="rateSA">
+                                 <tooltip>
+                                    <Tooltip text="Cooling Rate for Simulated Annealing" />
+                                 </tooltip></TextField>
                            </children>
                         </VBox>
                         <VBox prefHeight="89.0" prefWidth="56.0" spacing="15.0">
                            <children>
-                              <Label text="gEpoch#" />
-                              <Label text="popSize" />
-                              <Label text="mutRate" />
+                              <Label text="gEpoch#">
+                                 <tooltip>
+                                    <Tooltip text="Number of Generation Epoch" />
+                                 </tooltip></Label>
+                              <Label text="popSize">
+                                 <tooltip>
+                                    <Tooltip text="Parent Population Size" />
+                                 </tooltip></Label>
+                              <Label text="mutRate">
+                                 <tooltip>
+                                    <Tooltip text="Mutation Rate for Genetic" />
+                                 </tooltip></Label>
                            </children>
                         </VBox>
                         <VBox prefHeight="89.0" prefWidth="72.0" spacing="5.0">
                            <children>
-                              <TextField fx:id="epochNumGenetic" prefHeight="6.0" prefWidth="72.0" />
-                              <TextField fx:id="populationSizeGenetic" prefHeight="0.0" prefWidth="72.0" />
-                              <TextField fx:id="mutationRateGenetic" />
+                              <TextField fx:id="epochNumGenetic" prefHeight="6.0" prefWidth="72.0">
+                                 <tooltip>
+                                    <Tooltip text="Number of Generation Epoch" />
+                                 </tooltip></TextField>
+                              <TextField fx:id="populationSizeGenetic" prefHeight="0.0" prefWidth="72.0">
+                                 <tooltip>
+                                    <Tooltip text="Parent Population Size" />
+                                 </tooltip></TextField>
+                              <TextField fx:id="mutationRateGenetic">
+                                 <tooltip>
+                                    <Tooltip text="Mutation Rate for Genetic" />
+                                 </tooltip></TextField>
                            </children>
                         </VBox>
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <LineChart fx:id="chart" alternativeColumnFillVisible="true" legendSide="TOP" maxWidth="1.7976931348623157E308" titleSide="BOTTOM">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" fx:id="xAxis" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis fx:id="yAxis" side="LEFT" />
-              </yAxis>
-            </LineChart>
+            <VBox alignment="CENTER" prefHeight="576.0" prefWidth="513.0">
+               <children>
+                  <LineChart fx:id="chart" alternativeColumnFillVisible="true" legendSide="TOP" maxWidth="1.7976931348623157E308" prefHeight="539.0" prefWidth="512.0" title="Best Run" titleSide="BOTTOM">
+                    <xAxis>
+                      <NumberAxis label="Epoch" side="BOTTOM" fx:id="xAxis" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="yAxis" label="Value/Fitness" side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Button fx:id="refreshGraphButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleRefreshGraphButtonAction" text="Refresh Graph" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </children>

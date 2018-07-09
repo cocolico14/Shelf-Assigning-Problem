@@ -16,7 +16,7 @@ public class HillClimbing {
     
     private Table tbl;
     private Tree tree;
-    private ArrayList<Pair<String, Integer>> chart;
+    private ArrayList<Pair<Integer, Integer>> chart;
     
     public HillClimbing(Table tbl) {
         this.tbl = tbl;
@@ -34,7 +34,7 @@ public class HillClimbing {
         int counter = 0;
         while(true){
             bestNode.addChilden(tbl.subsSize);
-            chart.add(new Pair<String, Integer>(Integer.toString(counter), bestNode.getHeru(tbl)));
+            chart.add(new Pair<Integer, Integer>(counter, bestNode.getHeru(tbl)));
             Node neighbor = bestNode.getChildren().get(0);
             for (Node pz : bestNode.getChildren()) {
                 if(pz.getHeru(tbl) > neighbor.getHeru(tbl)){
@@ -50,7 +50,7 @@ public class HillClimbing {
         }
     }
 
-    public ArrayList<Pair<String, Integer>> getChart() {
+    public ArrayList<Pair<Integer, Integer>> getChart() {
         return chart;
     }
     
