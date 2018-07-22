@@ -16,7 +16,7 @@ Solving Shelf Assigning Problem with Hill Climbing, Simulated Annealing and Gene
   - 
 
 
-  Tree and Node Class:
+  Tree and Node Classes:
   
   - Making Tree Data Structure for Hill Climbing and Simulated Annealing
   - String[] items is the represtation of a state ["1,2,3", "4", "5,6"] (item 1, 2, 3 in shelf 1 and ...) 
@@ -24,4 +24,16 @@ Solving Shelf Assigning Problem with Hill Climbing, Simulated Annealing and Gene
   - addChildren(int n) method in Node Class : making nodes that each one has items spread out across 'n' shelfs with randomize configuration (
     - for example : apply addChildren(2) to node ["1, 2, 3, 4, 5"] (1 distinct shelf contain 5 item) -> one of the result maybe is  ["2, 3", "1, 4, 5"] (2 distinct shelf each contain 2 and 3 items respectively - each node is array of string and each string represent each shelf)
   - getHeru(Table tlb) method in Node Class :
-        
+  
+  
+  HillClimbing Class:
+  
+  -
+  
+  SimulatedAnnealing Class:
+  
+  -
+  
+  Genetic Class:
+  
+  -      
