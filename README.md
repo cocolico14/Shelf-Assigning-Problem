@@ -54,7 +54,7 @@ Solving Shelf Assigning Problem with Hill Climbing, Simulated Annealing and Gene
 ![compare genetic with hc image](./assets/3-Comparing%20Genetic%20with%20Hill%20Climbing.png)
 <hr />
 
-## Authors
+## Author
 
   - Soheil Changizi ( [@cocolico14](https://github.com/cocolico14) )
 
