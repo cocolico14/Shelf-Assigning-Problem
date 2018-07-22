@@ -31,21 +31,25 @@ Solving Shelf Assigning Problem with Hill Climbing, Simulated Annealing and Gene
   -
   
 ![compare hc results image](./assets/2-Compare Results.png)
+<hr />
   
   SimulatedAnnealing Class:
   
   -
   
 ![various input for sim ann image](./assets/5-Various Input for Sim Ann.png)
+<hr />
   
   Genetic Class:
   
   -    
   
 ![various input for genetic image](./assets/4-Various Input for Genetic.png)
+<hr />
   
   FXMLDocumentController Class:
   
   -
   
 ![compare genetic with hc image](./assets/3-Comparing Genetic with Hill Climbing.png)
+<hr />
