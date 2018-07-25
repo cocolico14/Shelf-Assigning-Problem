@@ -1,5 +1,5 @@
 # Shelf-Assigning-Problem
-Solving Shelf Assigning Problem with Hill Climbing, Simulated Annealing and Genetic Algorithms
+> Solving Shelf Assigning Problem with Hill Climbing, Simulated Annealing and Genetic Algorithms
 
 <img src="./assets/1-Overview.png" width="750" align="middle">
 
