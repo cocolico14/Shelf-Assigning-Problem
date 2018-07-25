@@ -32,7 +32,7 @@ Find a configuration of substances in shelf such that minimize number of shelves
   
   HillClimbing Class:
   
-  - start from init state and find a state with higher heruistic (may stuck in local maxima)
+  - start from initial state and find a state with higher heruistic (may stuck in local maxima)
   
 <img src="./assets/2-Compare%20Results.png" width="750" align="middle">
 
@@ -40,15 +40,20 @@ Find a configuration of substances in shelf such that minimize number of shelves
   
   SimulatedAnnealing Class:
   
-   - start from init state and find a state with higher heruistic with probility of exp((newEnergy - energy) / temperature) (may stuck in local maxima)
+   - start from initial state and find a state with higher heruistic with probility of exp((newEnergy - energy) / temperature) (may stuck in local maxima)
   
-<img src="./assets/5-Various%20Input%20for%20Sim%20Ann" width="750" align="middle">
+<img src="./assets/5-Various%20Input%20for%20Sim%20Ann.png" width="750" align="middle">
 
 <hr />
   
   Genetic Class:
   
-  -    
+  - first it makes a population of number given in input (popSize) converting each table initial state to a chromosome for example state ["1,2", "3", "4,5"] chromosome is "11233" (position of each character is item's number and character value is the shelf number) and fitness of each is calcualted (fitness function is the same as heuristic function).
+  - in fitness function it always trim the sorted chromosome list in a way that list size be always equal to popSize.
+  - then in solve method it does a selection, crossover and mutation on each chromosome follow by another population and evaluating fitness in each epoch(generation).
+  - 66% of selection is based on fitness and 33% is based on luck(randomness) (ordering the chromosome list)
+  - then each chromosome is crossovered with the next chromosome in the list.
+  - with a chance of mutRate some character of a chromosome might mutate.
   
 <img src="./assets/4-Various%20Input%20for%20Genetic.png" width="750" align="middle">
 
